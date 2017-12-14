@@ -1,7 +1,7 @@
-function qr (chaine){
+const qr = function QuerySelector (chaine){
 	return document.querySelector(chaine);
 }
 
-function qrAll (chaine){
+const qrAll = function querySelectorAll (chaine){
 	return document.querySelectorAll(chaine);
 }
