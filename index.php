@@ -29,7 +29,7 @@ $bonus = json_decode(fread($handle, filesize($filename)));
 			</tr>
 		<?php endforeach;?>
 	</table>
-	  <button onclick="myFunctionGauche()"> Gauche </button>
-    <button onclick="myFunctionDroite()"> Droite </button>
+	 <!--  <button onclick="myFunctionGauche()"> Gauche </button>
+    <button onclick="myFunctionDroite()"> Droite </button> --> <!-- Bouton de test -->
 	<script src="js/shovel.js"></script>
 </body>
