@@ -24,6 +24,7 @@ const incrementBonusInterval = window.setInterval(incrementBonusAuto, 1000);
 
 var incrementBonus = {};
 
+// FIXME: Image bug 
 qr("#pelle").addEventListener("mouseup", function(){  
 	i++;
 	let result = qr("#result > p > strong");
