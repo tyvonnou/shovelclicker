@@ -20,11 +20,18 @@ const incrementBonusAuto = function () {
 	}
 	qr("#result > p > strong").textContent = i;
 }
+
+const resetposition = function resetposition () {
+		var img = document.getElementById("pelle");
+		var t = img.style.transform.match(/(\d+)/g) || [0];  // on met ||[0) pour le 1st passage
+		var val = 0;                      // incrémentation de 40
+		img.style.transform = 'rotate(' +val +'deg)';
+}
 const incrementBonusInterval = window.setInterval(incrementBonusAuto, 1000);
 
 var incrementBonus = {};
 
-// FIXME: Image bug 
+
 qr("#pelle").addEventListener("mouseup", function(){  
 	i++;
 	let result = qr("#result > p > strong");
@@ -32,10 +39,19 @@ qr("#pelle").addEventListener("mouseup", function(){
 	myFunctionGauche();
 });
 
+
 qr("#pelle").addEventListener("mousedown", function(){
 	let result = qr("#result > p > strong");
 	result.textContent = i;
 	myFunctionDroite();
+});
+
+
+
+qr("#pelle").addEventListener("mouseout", function(){
+		resetposition();
+		let result = qr("#result > p > strong");
+		result.textContent = i;
 });
 
 qr('#table-bonus').addEventListener('click', function (evt) {			//Récupération de l'élément parent (th/td)
