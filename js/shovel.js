@@ -14,25 +14,42 @@ const myFunctionGauche = function moveToLeft() {
 	  img.style.transform = 'rotate(' +val +'deg)';
 };
 
-
-const shovelclick = function shovelclick() {				// Fonction qui realise le mouvement de la pelle 
-	qr("#pelle").addEventListener("mouseup", function(){  
-		var result = qr("#result > p > strong");
-		result.innerHTML = i;
-		myFunctionGauche();
-	});
-
-	qr("#pelle").addEventListener("mousedown", function(){
-		i++;
-		var result = qr("#result > p > strong");
-		result.innerHTML = i;
-		myFunctionDroite();
-	});
-	
+const incrementBonusAuto = function () {
+	for (key in incrementBonus) {
+		i = Math.round10(i + incrementBonus[key], -1);
+	}
+	qr("#result > p > strong").textContent = i;
 }
+const incrementBonusInterval = window.setInterval(incrementBonusAuto, 1000);
 
-shovelclick();						
-	
+var incrementBonus = {};
+
+qr("#pelle").addEventListener("mouseup", function(){  
+	i++;
+	let result = qr("#result > p > strong");
+	result.textContent = i;
+	myFunctionGauche();
+});
+
+qr("#pelle").addEventListener("mousedown", function(){
+	let result = qr("#result > p > strong");
+	result.textContent = i;
+	myFunctionDroite();
+});
+
+qr('#table-bonus').addEventListener('click', function (evt) {			//Récupération de l'élément parent (th/td)
+	var parent = evt.target.parentElement;	
+	if (parent.tagName === 'TR') {
+		console.log(parent);
+		console.log('bonus', parent.id);
+		incrementBonus[parent.id] =  Math.round10(incrementBonus[parent.id] + bonus[parent.id], -1);
+		qr('#total-' + parent.id).textContent = incrementBonus[parent.id];
+		console.log(incrementBonus);
+		
+	}
+});
+
+
 
 
 
