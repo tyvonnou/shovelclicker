@@ -36,3 +36,7 @@ const ajaxx = function requeteAjaxText(url, args, method="POST") {
         xhr.send(params);
     });
 }
+
+const randArray = function pickRandomElementInArray(items) {
+	return items[Math.floor(Math.random()*items.length)];
+}
