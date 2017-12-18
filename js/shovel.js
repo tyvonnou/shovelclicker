@@ -29,10 +29,11 @@ const resetposition = function resetposition () {
 }
 const incrementBonusInterval = window.setInterval(incrementBonusAuto, 1000);
 
+
 var incrementBonus = {};
 
 
-qr("#pelle").addEventListener("mouseup", function(){  
+qr("#pelle").addEventListener("mouseup", function(){
 	i++;
 	let result = qr("#result > p > strong");
 	result.textContent = i;
@@ -55,19 +56,25 @@ qr("#pelle").addEventListener("mouseout", function(){
 });
 
 qr('#tbody-bonus').addEventListener('click', function (evt) {			//Récupération de l'élément parent (th/td)
-	var parent = evt.target.parentElement;	
+	var parent = evt.target.parentElement;
 	if (parent.tagName === 'TR') {
 		console.log(parent);
 		console.log('bonus', parent.id);
 		incrementBonus[parent.id] =  Math.round10(incrementBonus[parent.id] + bonus[parent.id], -1);
 		qr('#total-' + parent.id).textContent = incrementBonus[parent.id];
 		console.log(incrementBonus);
-		
+
 	}
 });
 
+qr('#tbody-gain').addEventListener('click', function (evt) {			//Récupération de l'élément parent (th/td)
+	var parent = evt.target.parentElement;
+	if (parent.tagName === 'TR') {
+		console.log(parent);
+		console.log('gain', parent.id);
+		incrementBonus[parent.id] =  Math.round10(incrementBonus[parent.id] + gain[parent.id], -1);
+		qr('#total-' + parent.id).textContent = incrementBonus[parent.id];
+		console.log(incrementBonus);
 
-
-
-
-
+	}
+});
