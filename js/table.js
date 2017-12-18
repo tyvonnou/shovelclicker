@@ -6,7 +6,7 @@ window.onload = function () {
 		var tbody = qr('#tbody-bonus');
 		for (key in res) {
 			incrementBonus[key] = 0;
-			
+
 			let tr = document.createElement('TR');
 			let th = document.createElement('TH');
 			let tdValue = document.createElement('TD');
@@ -24,7 +24,7 @@ window.onload = function () {
 	}).catch((err) => {
 		console.error(err);
 	});
-	
+
 	ajaxx('json/gain.json').then((res) => {
 		gain = res;
 		console.log(res);
@@ -32,7 +32,7 @@ window.onload = function () {
 			Object.keys(res).forEach(prop => {
 				for (key in res[prop]) {
 					incrementBonus[key] = 0;
-					
+
 					let tr = document.createElement('TR');
 					let th = document.createElement('TH');
 					let tdValue = document.createElement('TD');
@@ -46,10 +46,10 @@ window.onload = function () {
 					tr.appendChild(tdValue);
 					tr.appendChild(tdTotal);
 					tbody.appendChild(tr);
-					
-				}
-			});
+
+			}
+		});
 	}).catch((err) => {
 		console.error(err);
-	});
+	}); 
 }
