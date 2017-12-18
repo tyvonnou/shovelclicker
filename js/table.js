@@ -3,8 +3,7 @@ var bonus;
 window.onload = function () {
 	ajaxx('json/bonus.json').then((res) => {
 		bonus = res;
-		var tbody = document.createElement('TBODY');
-		var table = qr('#table-bonus');
+		var tbody = qr('#tbody-bonus');
 		for (key in res) {
 			incrementBonus[key] = 0;
 			
@@ -22,7 +21,6 @@ window.onload = function () {
 			tr.appendChild(tdTotal);
 			tbody.appendChild(tr);
 		}
-		table.appendChild(tbody)
 	}).catch((err) => {
 		console.error(err);
 	});

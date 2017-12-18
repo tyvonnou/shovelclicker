@@ -54,7 +54,7 @@ qr("#pelle").addEventListener("mouseout", function(){
 		result.textContent = i;
 });
 
-qr('#table-bonus').addEventListener('click', function (evt) {			//Récupération de l'élément parent (th/td)
+qr('#tbody-bonus').addEventListener('click', function (evt) {			//Récupération de l'élément parent (th/td)
 	var parent = evt.target.parentElement;	
 	if (parent.tagName === 'TR') {
 		console.log(parent);
