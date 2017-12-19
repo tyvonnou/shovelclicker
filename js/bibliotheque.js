@@ -53,6 +53,7 @@ const randIndex = function pickRandomIndexInArray(items) {
 
 const removeAllChild = function removeAllChild(node) {
     while (node.hasChildNodes()) {
+    	console.log(node.lastChild);
         node.removeChild(node.lastChild);
     }
 };

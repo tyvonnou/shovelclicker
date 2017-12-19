@@ -1,4 +1,4 @@
-var bonus, gain;
+var bonus, gainObj;
 
 window.onload = function () {
 	ajaxx('json/bonus.json').then((res) => {
@@ -11,8 +11,8 @@ window.onload = function () {
 			let tdValue = document.createElement('TD');
 			let tdTotal = document.createElement('TD');
 			tr.id = key;
-			th.textContent = key;
-			tdValue.textContent = res[key];
+			th.innerHTML = `${key}<br />(${res[key].price})`;
+			tdValue.textContent = res[key].value;
 			tdTotal.textContent = 0;
 			tdTotal.id = 'total-' + key
 			tr.appendChild(th);
@@ -25,7 +25,7 @@ window.onload = function () {
 	});
 
 	ajaxx('json/gain.json').then((res) => {
-		gain = res;
+		gainObj = res;
 	}).catch((err) => {
 		console.error(err);
 	}); 

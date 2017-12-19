@@ -1,7 +1,22 @@
 {
-	"effondrement":0.2,
-	"main":1,
-	"redbull":5,
-	"Etoile": 100,
-	"Triche":2000
+	"effondrement":{
+		"value":0.2,
+		"price":15
+	},
+	"main":{
+		"value":1,
+		"price":30	
+	},
+	"redbull":{
+		"value":5,
+		"price":40
+	},
+	"etoile":{
+		"value":100,
+		"price":60
+	}, 
+	"triche":{
+		"value":2000,
+		"price":5000
+	}
 }

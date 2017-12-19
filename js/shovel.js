@@ -1,4 +1,4 @@
-var i = 0, money = 0;
+var i = 0, money = 0, divLootEvenPair = 1, gainArray = [];
 
 const myFunctionDroite = function moveToRightImage() {
 	  var img = document.getElementById("pelle");
@@ -21,7 +21,9 @@ const incrementBonusAuto = function () {
 	}
 	qr("#result").textContent = i;
 	if (i != meters) {
-		loot();
+		for (key in incrementBonus) {
+			if (incrementBonus[key] > 0) loot();			
+		}
 	}
 }
 
@@ -33,29 +35,48 @@ const resetposition = function resetposition () {
 }
 
 const loot = function lootTresor () { //TODO: Generate random word
-	var cat, index;
-	for (let keyStr in gain) {
-		let keyArray = keyStr.split(";", 2);
-		let div = qr('#div-loot');
-		if (i >= keyArray[0] && i <= keyArray[1]) {
-			index = randIndex(gain[keyStr]);
-			if (gain[keyStr][index]['total']) {
-				gain[keyStr][index]['total'] += 1;
-			} else {
-				gain[keyStr][index]['total'] = 1;
-			}
-			money += gain[keyStr][index]['value'];
-			qr('#argent').textContent = money;
-			if (div.childElementCount === 5) {
-				removeAllChild(div);
-			}
-			let p = document.createElement('P');
-			p.innerHTML = `
-				Nom : <b>${gain[keyStr][index]['name']}</b> <br /> 
-				Valeur : <b>${gain[keyStr][index]['value']}</b>`;
-			div.appendChild(p);
-			break;
+	var cat, index, div = qr('#div-loot');
+	for (let key in gainObj) {
+		if (i >= parseInt(key)) {
+			gainObj[key].data.forEach(element => {
+				element.color = gainObj[key].color;
+				gainArray.push(element);
+			});
 		}
+	}	
+	if (gainArray.length > 0) {
+		cat = randArray(gainArray);
+		if (cat['total']) {
+			cat['total'] += 1;
+		} else {
+			cat['total'] = 1;
+		}
+		money += cat['value'];
+		qr('#argent').textContent = money;
+		if (div.childElementCount === 10) {
+			if (div.lastChild.nodeName === "#text") {
+				div.removeChild(div.lastChild);
+			}
+			div.removeChild(div.lastChild);
+		}
+		let p = document.createElement('P');
+		p.innerHTML = `
+			Nom : <b>${cat['name']}</b> <br /> 
+			Valeur : <b>${cat['value']}</b>
+		`;
+		p.style.backgroundColor = cat['color'];
+		if (div.hasChildNodes()) {
+			div.insertBefore(p, div.firstChild);
+		} else  {
+			div.appendChild(p);
+		}
+//				if (divLootEvenPair%2 === 0) {
+//					p.classList.add('even');
+//					divLootEvenPair += 1;
+//				} else {
+//					p.classList.add('odd');
+//					divLootEvenPair = 0;
+//				}
 	}
 }
 
@@ -92,11 +113,11 @@ qr("#pelle").addEventListener("mouseout", function(){
 qr('#tbody-bonus').addEventListener('click', function (evt) {			//Récupération de l'élément parent (th/td)
 	var parent = evt.target.parentElement;
 	if (parent.tagName === 'TR') {
-		console.log(parent);
-		console.log('bonus', parent.id);
-		incrementBonus[parent.id] =  Math.round10(incrementBonus[parent.id] + bonus[parent.id], -1);
-		qr('#total-' + parent.id).textContent = incrementBonus[parent.id];
-		console.log(incrementBonus);
-
+		if (money >= bonus[parent.id].price) {
+			incrementBonus[parent.id] =  Math.round10(incrementBonus[parent.id] + bonus[parent.id].value, -1);
+			qr('#total-' + parent.id).textContent = incrementBonus[parent.id];
+			money -= bonus[parent.id].price;
+			incrementBonusAuto();
+		}
 	}
 });
