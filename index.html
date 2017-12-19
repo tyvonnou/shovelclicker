@@ -9,19 +9,9 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
 </head>
 <body>
-
-	<div class="container">
+	<div class="container-fluid">
 		<div class="row">
-			<div class="col-md-3">
-				<figure>
-					<figcaption>Creusez et atteignez les sommets :</figcaption>
-					<img alt="pelle" src="images/pelle.png" id="pelle" ondrag="return false" onmousedown="return false"/>
-				</figure>
-				<div id="result">
-					<p>Profondeur en mètres : <strong></strong></p>
-				</div>
-			</div>
-			<div class="col-md-3">
+			<div class="col-md-4">
 				<table class="table table-hover" id="table-bonus">
 					<thead>
 						<tr>
@@ -36,21 +26,20 @@
 					<tbody id="tbody-bonus"></tbody>
 				</table>
 			</div>
-			<div class="col-md-3">
-				<table class="table table-hover" id="table-gain">
-					<thead>
-						<tr>
-							<th colspan="3" class="text-center">Gain</th>
-						</tr>
-						<tr>
-							<th>Nom</th>
-							<th>Prix</th>
-							<th>Prix total</th>
-						</tr>
-					</thead>
-					<tbody id="tbody-gain"></tbody>
-				</table>
+			<div class="col-md-4">
+				<figure>
+					<figcaption>Creusez et atteignez les sommets :</figcaption>
+					</audio>
+				</figure>
+				<div>
+					<p>
+						Profondeur en mètres : <strong id="result"></strong><br />
+						Argent : <strong id="argent"></strong>
+						<img alt="pelle" src="images/minecraft-icons-pack-by-chrisl/Iron-Shovel.png" id="pelle" ondrag="return false" onmousedown="return false"/>
+					</p>
+				</div>
 			</div>
+			<div class="col-md-3" id="div-loot"></div>
 		</div>
 	</div>
 	 <!--  <button onclick="myFunctionGauche()"> Gauche </button>

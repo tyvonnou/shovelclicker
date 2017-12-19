@@ -8,3 +8,35 @@
 .rotated-7 {transform: rotate(280deg);}
 .rotated-8 {transform: rotate(320deg);}
 
+.container-fluid {
+	margin-top: 26px;
+}
+
+.row:first-child {
+	margin-left: 4px;
+}
+
+#pelle {
+	width: 75%;
+}
+
+#tbody-bonus th, #div-loot b {
+	text-transform: capitalize;
+}
+
+tbody td {
+	vertical-align: middle !important;
+}
+
+#div-loot p {
+	border-radius: 16px;
+	padding-left: 15px;
+}
+
+#div-loot .even {
+	background-color: #4d79ff;
+}
+
+#div-loot .odd {
+	background-color: #94b8b8;
+}

@@ -1,15 +1,65 @@
 {
-	"100m": {
-		"capsule":1,
-		"piece":5
-	},
-	
-	"200m": {
-		"fer":10
-	},
-	
-	"500m":{
-		"cuivre":20,
-		"or":50
-	}
+
+    "4000": [ 
+    	{
+    		"name":"capsule",
+    		"value":8000
+    	}
+    ],
+    "2000": [
+    	{
+    		"name":"minerai",
+    		"value":3
+    	}
+    ],
+    "1000": [
+    	{
+    		"name":"lingots fer",
+    		"value":500
+    	}
+    ],
+    "500": [
+    	{
+    		"name":"argent",
+    		"value":10
+    	}
+    ],
+    "100": {
+	    "data":[
+	    	{
+	    		"name":"roche",
+	    		"value":1
+	    	},
+	    	{
+	    		"name":"charbon",
+	    		"value":3
+	    	},
+	    	{
+	    		"name":"fer",
+	    		"value":5
+	    	}
+	    ],
+	    "color":"red"
+    },
+    "1": {
+    	"data":[
+	    	{
+	    		"name":"pièce",
+	    		"value":1
+	    	},
+	    	{
+	    		"name":"cailloux",
+	    		"value":0	
+	    	},
+	    	{
+	    		"name":"sable",
+	    		"value":0
+	    	},
+	    	{
+	    		"name":"restes annimals",
+	    		"value":0
+	    	}
+	    ],
+	    "color":"#b3cccc"
+    }
 }
