@@ -34,11 +34,11 @@ const resetposition = function resetposition () {
 		img.style.transform = 'rotate(' +val +'deg)';
 }
 
-const loot = function lootTresor () { //TODO: Generate random word
+const loot = function lootTresor () { 
 	var cat, index, div = qr('#div-loot');
 	for (let key in gainObj) {
 		if (i >= parseInt(key)) {
-			gainObj[key].data.forEach(element => {
+			gainObj[key].data.forEach(element => {		//FIXME: gainObj[key].data is undefined
 				element.color = gainObj[key].color;
 				gainArray.push(element);
 			});
