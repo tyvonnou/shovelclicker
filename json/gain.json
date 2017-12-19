@@ -1,15 +1,43 @@
 {
-	"100m": {
-		"capsule":1,
-		"piece":5
-	},
 
-	"200m": {
-		"fer":10
-	},
-
-	"500m": {
-		"cuivre":20,
-		"or":50
-	}
+    "1501;9999999": [ 
+    	{
+    		"name":"Capsule",
+    		"value":1
+    	}
+    ],
+    "1001;1500": [
+    	{
+    		"name":"Minerai",
+    		"value":3
+    	}
+    ],
+    "701;1000": [
+    	{
+    		"name":"fer",
+    		"value":5
+    	}
+    ],
+    "401;700": [
+    	{
+    		"name":"Argent",
+    		"value":10
+    	}
+    ],
+    "101;400": [
+    	{
+    		"name":"Or",
+    		"value":30
+    	}
+    ],
+    "1;100": [
+    	{
+    		"name":"Pièce",
+    		"value":1
+    	},
+    	{
+    		"name":"cailloux",
+    		"value":0
+    	}
+    ]
 }

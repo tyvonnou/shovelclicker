@@ -40,3 +40,19 @@ const ajaxx = function requeteAjaxText(url, args, method="POST") {
 const randArray = function pickRandomElementInArray(items) {
 	return items[Math.floor(Math.random()*items.length)];
 }
+
+const randIndex = function pickRandomIndexInArray(items) {
+	return Math.floor(Math.random()*items.length);
+}
+
+
+/**
+ * Remove all children of an HTML element
+ * @param {DOMElement} node - html element
+ */
+
+const removeAllChild = function removeAllChild(node) {
+    while (node.hasChildNodes()) {
+        node.removeChild(node.lastChild);
+    }
+};
