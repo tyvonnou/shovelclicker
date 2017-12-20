@@ -8,8 +8,13 @@
 .rotated-7 {transform: rotate(280deg);}
 .rotated-8 {transform: rotate(320deg);}
 
+
+body {
+	background-color: #525253 !important;
+}
 .container-fluid {
 	margin-top: 26px;
+	
 }
 
 .row:first-child {
