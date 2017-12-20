@@ -6,7 +6,7 @@ const qrAll = function querySelectorAll (chaine){
 	return document.querySelectorAll(chaine);
 }
 
-const ajaxx = function requeteAjaxText(url, args, method="POST") {
+const ajaxx = function requeteAjaxText(url, args, method="GET") {
 	return new Promise((resolve, reject) => {
         const xhr = new XMLHttpRequest();
         xhr.open(method, url);
