@@ -22,7 +22,7 @@ const incrementBonusAuto = function () {
 	qr("#result").textContent = i;
 	if (i != meters) {
 		for (key in incrementBonus) {
-			if (incrementBonus[key] > 0) loot();			
+			if (incrementBonus[key] > 0) loot();
 		}
 	}
 }
@@ -34,16 +34,20 @@ const resetposition = function resetposition () {
 		img.style.transform = 'rotate(' +val +'deg)';
 }
 
-const loot = function lootTresor () { 
+const loot = function lootTresor () {
 	var cat, index, div = qr('#div-loot');
 	for (let key in gainObj) {
-		if (i >= parseInt(key)) {
-			gainObj[key].data.forEach(element => {		//FIXME: gainObj[key].data is undefined
-				element.color = gainObj[key].color;
-				gainArray.push(element);
-			});
+		if (gainObj.hasOwnProperty(key)) {
+			if (gainObj[key].hasOwnProperty('data')) {
+				if (i >= parseInt(key)) {
+					gainObj[key].data.forEach(element => {
+						element.color = gainObj[key].color;
+						gainArray.push(element);
+					});
+				}
+			}
 		}
-	}	
+	}
 	if (gainArray.length > 0) {
 		cat = randArray(gainArray);
 		if (cat['total']) {
@@ -61,7 +65,7 @@ const loot = function lootTresor () {
 		}
 		let p = document.createElement('P');
 		p.innerHTML = `
-			Nom : <b>${cat['name']}</b> <br /> 
+			Nom : <b>${cat['name']}</b> <br />
 			Valeur : <b>${cat['value']}</b>
 		`;
 		p.style.backgroundColor = cat['color'];
