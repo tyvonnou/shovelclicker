@@ -10,7 +10,6 @@ const ajaxx = function requeteAjaxText(url, args, method="GET") {
 	return new Promise((resolve, reject) => {
         const xhr = new XMLHttpRequest();
         xhr.open(method, url);
-        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 
         xhr.onreadystatechange = function (evt) {
             if (this.readyState === XMLHttpRequest.DONE) {
@@ -33,7 +32,10 @@ const ajaxx = function requeteAjaxText(url, args, method="GET") {
                 params += key + '=' + element + '&'; //?machin=2&
             }
         }
-        xhr.send(params);
+		if (method === "POST") {
+			xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+			xhr.send(params);	
+		} else xhr.send(null);
     });
 }
 
