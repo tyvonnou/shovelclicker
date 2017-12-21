@@ -1,6 +1,10 @@
 # shovelclicker
 
-readme
+This is game clicker we can dig to loot some treasures.
+
+## Do you want to play ? 
+
+Just go there : https://tyvonnou.github.io/shovelclicker/
 
 ## Source
 

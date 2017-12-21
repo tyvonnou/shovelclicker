@@ -6,16 +6,15 @@ const qrAll = function querySelectorAll (chaine){
 	return document.querySelectorAll(chaine);
 }
 
-const ajaxx = function requeteAjaxText(url, args, method="POST") {
+const ajaxx = function requeteAjaxText(url, args, method="GET") {
 	return new Promise((resolve, reject) => {
         const xhr = new XMLHttpRequest();
         xhr.open(method, url);
-        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 
         xhr.onreadystatechange = function (evt) {
             if (this.readyState === XMLHttpRequest.DONE) {
                 if (this.status === 200) {
-                    if (this.getResponseHeader("Content-Type") === "application/json") {
+                    if (this.getResponseHeader("Content-Type").split(';')[0] === "application/json") {
                         resolve(JSON.parse(this.responseText));
                     }
                     resolve(this.responseText);
@@ -33,7 +32,10 @@ const ajaxx = function requeteAjaxText(url, args, method="POST") {
                 params += key + '=' + element + '&'; //?machin=2&
             }
         }
-        xhr.send(params);
+	if (method === "POST") {
+		xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+		xhr.send(params);	
+	} else xhr.send(null);
     });
 }
 
