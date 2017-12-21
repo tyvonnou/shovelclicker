@@ -14,7 +14,7 @@ const ajaxx = function requeteAjaxText(url, args, method="GET") {
         xhr.onreadystatechange = function (evt) {
             if (this.readyState === XMLHttpRequest.DONE) {
                 if (this.status === 200) {
-                    if (this.getResponseHeader("Content-Type") === "application/json") {
+                    if (this.getResponseHeader("Content-Type").split(';')[0] === "application/json") {
                         resolve(JSON.parse(this.responseText));
                     }
                     resolve(this.responseText);
@@ -32,10 +32,10 @@ const ajaxx = function requeteAjaxText(url, args, method="GET") {
                 params += key + '=' + element + '&'; //?machin=2&
             }
         }
-		if (method === "POST") {
-			xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-			xhr.send(params);	
-		} else xhr.send(null);
+	if (method === "POST") {
+		xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+		xhr.send(params);	
+	} else xhr.send(null);
     });
 }
 
