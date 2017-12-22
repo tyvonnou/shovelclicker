@@ -10,19 +10,26 @@
 
 
 body {
-	background-color: #525253 !important;
+	background-color: #d9d8da !important;
 }
 .container-fluid {
 	margin-top: 26px;
 	
 }
 
+
 .row:first-child {
 	margin-left: 4px;
 }
 
+#coalcanvas {
+	z-index: 2;
+	top: 42px;
+} 
+
 #pelle {
 	width: 75%;
+	display: block;
 }
 
 #tbody-bonus th, #div-loot b {

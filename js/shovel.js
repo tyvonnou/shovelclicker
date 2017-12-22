@@ -1,4 +1,6 @@
 var i = 0, money = 0, divLootEvenPair = 1, gainArray = [];
+var system;
+
 
 const myFunctionDroite = function moveToRightImage() {
 	  var img = document.getElementById("pelle");
@@ -25,6 +27,7 @@ const incrementBonusAuto = function () {
 			if (incrementBonus[key] > 0) loot();
 		}
 	}
+	watchi();
 }
 
 const resetposition = function resetposition () {
@@ -88,31 +91,75 @@ const loot = function lootTresor () {
 const incrementBonusInterval = window.setInterval(incrementBonusAuto, 1000);
 
 
+const draw = function drawImgCanvas(sx, sy, sWidth, sHeight) {
+	var ctx = document.getElementById('coalcanvas').getContext('2d');
+	var coal = new Image();
+	var shovel = new Image();
+	coal.onload = function() {
+		ctx.drawImage(coal, sx, sy, sWidth, sHeight);
+	}
+	shovel.onload = function () {
+		ctx.drawImage(shovel, 0, 10, 150, 150);
+	}
+	coal.src = 'images/minecraft-icons-pack-by-chrisl/Coal.png';
+	shovel.src = 'images/minecraft-icons-pack-by-chrisl/Iron-Shovel.png';
+}
+
+const draw = function drawImgCanvas(idCanvas, sx, sy, sWidth, sHeight) {
+	var ctx = document.getElementById(idCanvas).getContext('2d'); 
+}
+
+const clearCanvas = function () {
+	var canvas = document.getElementById('coalcanvas');
+	var ctx = canvas.getContext('2d');
+	ctx.clearRect(0, 0, canvas.width, canvas.height);
+}
+
+//const annim = function () {
+//	draw(1 * 50, 0, 45, 45);
+//} 
+
+const watchi = function () {				//Affichege de i 
+	let result = qr("#result");
+	let title = qr('title')
+	title.textContent = i + " - Shovel Clicker"; 
+	result.textContent = i;
+}
+
+
 var incrementBonus = {};
 
+var annim = Annimation(
+		'coalcanvas', 
+		'images/minecraft-icons-pack-by-chrisl/Iron-Shovel.png',
+		'images/minecraft-icons-pack-by-chrisl/Coal.png'
+);
 
-qr("#pelle").addEventListener("mouseup", function(){
-	i++;
-	loot();
-	let result = qr("#result");
-	result.textContent = i;
-	myFunctionGauche();
+//qr("#coalcanvas").addEventListener("mouseup", function(){
+//	i++;
+//	loot();
+////	myFunctionGauche();
+//	clearCanvas();
+//	draw(50, 30, 45, 45);
+//});
+
+//qr("#coalcanvas").addEventListener("click", draw);
+
+//qr("#coalcanvas").addEventListener("mousedown", function(){
+//	watchi();
+////	myFunctionDroite();
+//	clearCanvas();
+//	draw(75, 0, 45, 45);
+//});
+
+qr('#coalcanvas').addEventListener("click", function () {
+	annim.drawAnnimation();
 });
 
-
-qr("#pelle").addEventListener("mousedown", function(){
-	let result = qr("#result");
-	result.textContent = i;
-	myFunctionDroite();
-});
-
-
-
-qr("#pelle").addEventListener("mouseout", function(){
-		resetposition();
-		let result = qr("#result");
-		result.textContent = i;
-});
+//qr("#coalcanvas").addEventListener("mouseout", function(){
+//	clearCanvas();
+//	draw(50, 30, 45, 45);
+//});
 
 qr('#tbody-bonus').addEventListener('click', function (evt) {			//Récupération de l'élément parent (th/td)
 	var parent = evt.target.parentElement;
@@ -125,3 +172,7 @@ qr('#tbody-bonus').addEventListener('click', function (evt) {			//Récupération
 		}
 	}
 });
+
+
+
+

@@ -5,6 +5,7 @@
 <title>Shovel Clicker</title>
 <script src='js/bibliotheque.js'></script>
 <script src="js/mdnRound.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.16/p5.js"></script>
 <link href="default.css" rel="stylesheet" type="text/css" />
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
 </head>
@@ -29,14 +30,14 @@
 			<div class="col-md-4">
 				<figure>
 					<figcaption>Creusez et atteignez les sommets :</figcaption>
-					</audio>
 				</figure>
 				<div>
 					<p>
 						Profondeur en mètres : <strong id="result"></strong><br />
 						Argent : <strong id="argent"></strong>
-						<img alt="pelle" src="images/minecraft-icons-pack-by-chrisl/Iron-Shovel.png" id="pelle" ondrag="return false" onmousedown="return false"/>
 					</p>
+<!-- 					<img class="float-left" alt="pelle" src="images/minecraft-icons-pack-by-chrisl/Iron-Shovel.png" id="pelle" ondrag="return false" onmousedown="return false"/>
+ -->					<canvas id="coalcanvas"></canvas>
 				</div>
 			</div>
 			<div class="col-md-3" id="div-loot"></div>
@@ -44,6 +45,7 @@
 	</div>
 	 <!--  <button onclick="myFunctionGauche()"> Gauche </button>
     <button onclick="myFunctionDroite()"> Droite </button> --> <!-- Bouton de test -->
+	<script	src="js/annimation.js"></script>
 	<script src="js/shovel.js"></script>
 	<script src="js/table.js"></script>
 </body>
