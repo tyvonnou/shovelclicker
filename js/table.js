@@ -28,5 +28,5 @@ window.onload = function () {
 		gainObj = res;
 	}).catch((err) => {
 		console.error(err);
-	}); 
+	});
 }
