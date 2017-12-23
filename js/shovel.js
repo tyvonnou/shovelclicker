@@ -91,88 +91,77 @@ const loot = function lootTresor () {
 const incrementBonusInterval = window.setInterval(incrementBonusAuto, 1000);
 
 
-const draw = function drawImgCanvas(sx, sy, sWidth, sHeight) {
-	var ctx = document.getElementById('coalcanvas').getContext('2d');
-	var coal = new Image();
-	var shovel = new Image();
-	coal.onload = function() {
-		ctx.drawImage(coal, sx, sy, sWidth, sHeight);
-	}
-	shovel.onload = function () {
-		ctx.drawImage(shovel, 0, 10, 150, 150);
-	}
-	coal.src = 'images/minecraft-icons-pack-by-chrisl/Coal.png';
-	shovel.src = 'images/minecraft-icons-pack-by-chrisl/Iron-Shovel.png';
-}
-
-const draw = function drawImgCanvas(idCanvas, sx, sy, sWidth, sHeight) {
-	var ctx = document.getElementById(idCanvas).getContext('2d'); 
-}
-
-const clearCanvas = function () {
-	var canvas = document.getElementById('coalcanvas');
-	var ctx = canvas.getContext('2d');
-	ctx.clearRect(0, 0, canvas.width, canvas.height);
-}
+// const draw = function drawImgCanvas(sx, sy, sWidth, sHeight) {
+// 	var ctx = document.getElementById('coalcanvas').getContext('2d');
+// 	var coal = new Image();
+// 	var shovel = new Image();
+// 	coal.onload = function() {
+// 		ctx.drawImage(coal, sx, sy, sWidth, sHeight);
+// 	}
+// 	shovel.onload = function () {
+// 		ctx.drawImage(shovel, 0, 10, 150, 150);
+// 	}
+// 	coal.src = 'images/minecraft-icons-pack-by-chrisl/Coal.png';
+// 	shovel.src = 'images/minecraft-icons-pack-by-chrisl/Iron-Shovel.png';
+// }
+//
+// const draw = function drawImgCanvas(idCanvas, sx, sy, sWidth, sHeight) {
+// 	var ctx = document.getElementById(idCanvas).getContext('2d');
+// }
+//
+// const clearCanvas = function () {
+// 	var canvas = document.getElementById('coalcanvas');
+// 	var ctx = canvas.getContext('2d');
+// 	ctx.clearRect(0, 0, canvas.width, canvas.height);
+// }
 
 //const annim = function () {
 //	draw(1 * 50, 0, 45, 45);
-//} 
+//}
 
-const watchi = function () {				//Affichege de i 
+const watchi = function () {				//Affichege de i
 	let result = qr("#result");
 	let title = qr('title')
-	title.textContent = i + " - Shovel Clicker"; 
+	title.textContent = i + " - Shovel Clicker";
 	result.textContent = i;
 }
 
 
 var incrementBonus = {};
 
-var annim = Annimation(
-		'coalcanvas', 
+document.addEventListener('DOMContentLoaded', function () {
+	const annim = new Annimation(
+		'coalcanvas',
 		'images/minecraft-icons-pack-by-chrisl/Iron-Shovel.png',
 		'images/minecraft-icons-pack-by-chrisl/Coal.png'
-);
+	);
+	annim.drawShovel();
+	
+	qr('#coalcanvas').addEventListener("mousedown", function () {
+		i++;
+		loot();
+		watchi();
+		annim.drawAnimation(300, 150);
+	});
+	
+	qr("#coalcanvas").addEventListener("mouseup", function(){
+		annim.drawAnimation(225, 225);
+	});
 
-//qr("#coalcanvas").addEventListener("mouseup", function(){
-//	i++;
-//	loot();
-////	myFunctionGauche();
-//	clearCanvas();
-//	draw(50, 30, 45, 45);
-//});
+	qr("#coalcanvas").addEventListener("mouseout", function () {
+		annim.drawShovel();
+	});
 
-//qr("#coalcanvas").addEventListener("click", draw);
-
-//qr("#coalcanvas").addEventListener("mousedown", function(){
-//	watchi();
-////	myFunctionDroite();
-//	clearCanvas();
-//	draw(75, 0, 45, 45);
-//});
-
-qr('#coalcanvas').addEventListener("click", function () {
-	annim.drawAnnimation();
-});
-
-//qr("#coalcanvas").addEventListener("mouseout", function(){
-//	clearCanvas();
-//	draw(50, 30, 45, 45);
-//});
-
-qr('#tbody-bonus').addEventListener('click', function (evt) {			//Récupération de l'élément parent (th/td)
-	var parent = evt.target.parentElement;
-	if (parent.tagName === 'TR') {
-		if (money >= bonus[parent.id].price) {
-			incrementBonus[parent.id] =  Math.round10(incrementBonus[parent.id] + bonus[parent.id].value, -1);
-			qr('#total-' + parent.id).textContent = incrementBonus[parent.id];
-			money -= bonus[parent.id].price;
-			incrementBonusAuto();
+	qr('#tbody-bonus').addEventListener('click', function (evt) {			//Récupération de l'élément parent (th/td)
+		var parent = evt.target.parentElement;
+		if (parent.tagName === 'TR') {
+			if (money >= bonus[parent.id].price) {
+				incrementBonus[parent.id] = Math.round10(incrementBonus[parent.id] + bonus[parent.id].value, -1);
+				qr('#total-' + parent.id).textContent = incrementBonus[parent.id];
+				money -= bonus[parent.id].price;
+				incrementBonusAuto();
+			}
 		}
-	}
-});
-
-
-
+	});
+}, false);
 
